@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Tailor Agent</title>
+    <meta name="description" content="AI-powered resume tailoring with ATS keyword scoring">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo">📝 Resume Tailor</div>
+            <p class="subtitle">AI-powered optimization for your next big role</p>
+        </header>
+
+        <main class="main-content">
+            <div class="glass-panel input-section">
+                <h2>Tailor Your Resume</h2>
+                <form id="tailor-form">
+                    <div class="form-group">
+                        <label for="resume">Upload Resume (.txt, .md, .docx)</label>
+                        <div class="file-upload-wrapper">
+                            <input type="file" id="resume" name="resume" accept=".txt,.md,.docx" required>
+                            <div class="file-upload-visual">
+                                <span class="icon">📄</span>
+                                <span id="file-name">Drag & drop or click to browse</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="job-description">Job Description</label>
+                        <textarea id="job-description" name="job_description" rows="6" placeholder="Paste the target job description here..." required></textarea>
+                    </div>
+                    <button type="submit" id="submit-btn" class="primary-btn">
+                        <span>Analyze & Tailor</span>
+                        <div class="spinner" id="spinner"></div>
+                    </button>
+                </form>
+            </div>
+
+            <div class="results-container" id="results-container" style="display: none;">
+                <div class="glass-panel stats-section">
+                    <h2>ATS Match Overview</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value highlight" id="ats-score">0%</div>
+                            <div class="stat-label">ATS Score</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="matched-count">0</div>
+                            <div class="stat-label">Matched Keywords</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="missing-count">0</div>
+                            <div class="stat-label">Missing Keywords</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel details-section">
+                    <div class="keywords-row">
+                        <div class="keyword-box matched">
+                            <h3>Matched Keywords</h3>
+                            <div class="keyword-tags" id="matched-keywords"></div>
+                        </div>
+                        <div class="keyword-box missing">
+                            <h3>Missing Keywords</h3>
+                            <div class="keyword-tags" id="missing-keywords"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel output-section">
+                    <h2>Tailored Output</h2>
+                    <div class="markdown-output" id="tailored-output"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
