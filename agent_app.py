@@ -21,7 +21,7 @@ if not api_key:
 
 
 def run_mcp_tools(resume_text: str, job_description: str):
-    script = os.path.join(os.path.dirname(__file__), "mcp_server.py")
+    script = os.path.join(os.path.dirname(__file__), "src", "services", "mcp_server.py")
     proc = subprocess.run(
         [sys.executable, script],
         input=json.dumps({
